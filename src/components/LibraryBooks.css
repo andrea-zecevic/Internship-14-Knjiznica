@@ -1,0 +1,25 @@
+.library-books {
+  margin: 40px 0 20px 50px;
+}
+
+.library-books h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.library-books table {
+  width: 50%;
+  border-collapse: collapse;
+}
+
+.library-books th,
+.library-books td {
+  border: 2px solid rgb(93, 93, 216);
+  padding: 8px;
+  text-align: left;
+}
+
+.library-books th {
+  background-color: #f2f2f2;
+}

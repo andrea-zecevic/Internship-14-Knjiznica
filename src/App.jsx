@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import AddBookForm from "./components/AddBookForm";
+import LibraryBooks from "./components/LibraryBooks";
 import "./App.css";
+import initialBooks from "./initialBooks";
 
 function App() {
-  const [libraryBooks, setLibraryBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState(initialBooks);
 
   const handleAddBook = (bookData) => {
-    const updatedBooks = [...libraryBooks];
-    updatedBooks.push(bookData);
-    setLibraryBooks(updatedBooks);
+    const newBookList = [...allBooks, bookData];
+    setAllBooks(newBookList);
   };
 
   return (
@@ -19,14 +20,7 @@ function App() {
       <h2 className="main-heading">Dodavanje nove knjige</h2>
       <AddBookForm onAddBook={handleAddBook} />
       {/* Trenutne knjige u knjižnici */}
-      <h3 className="sub-heading">Trenutne knjige u bazi:</h3>
-      <ul>
-        {libraryBooks.map((book, index) => (
-          <li key={index}>
-            {book.title} - {book.author} - {book.copiesAvailable}
-          </li>
-        ))}
-      </ul>
+      <LibraryBooks books={allBooks} />
     </div>
   );
 }
