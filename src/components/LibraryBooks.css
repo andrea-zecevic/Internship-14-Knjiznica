@@ -23,3 +23,17 @@
 .library-books th {
   background-color: #f2f2f2;
 }
+
+.btn {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}

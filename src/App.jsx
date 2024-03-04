@@ -32,6 +32,40 @@ function App() {
     setFilteredBooks(filtered);
   };
 
+  const handleBorrowBook = (id) => {
+    setAllBooks(
+      allBooks.map((book) =>
+        book.id === id
+          ? { ...book, copiesAvailable: Math.max(0, book.copiesAvailable - 1) }
+          : book
+      )
+    );
+    setFilteredBooks(
+      filteredBooks.map((book) =>
+        book.id === id
+          ? { ...book, copiesAvailable: Math.max(0, book.copiesAvailable - 1) }
+          : book
+      )
+    );
+  };
+
+  const handleReturnBook = (id) => {
+    setAllBooks(
+      allBooks.map((book) =>
+        book.id === id
+          ? { ...book, copiesAvailable: book.copiesAvailable + 1 }
+          : book
+      )
+    );
+    setFilteredBooks(
+      filteredBooks.map((book) =>
+        book.id === id
+          ? { ...book, copiesAvailable: book.copiesAvailable + 1 }
+          : book
+      )
+    );
+  };
+
   return (
     <div className="App">
       <header className="header">
@@ -39,8 +73,12 @@ function App() {
       </header>
       <h2 className="main-heading">Dodavanje nove knjige</h2>
       <AddBookForm onAddBook={handleAddBook} />
-      {/* Trenutne knjige u knjižnici */}
-      <LibraryBooks books={filteredBooks} />
+      {}
+      <LibraryBooks
+        books={filteredBooks}
+        onBorrow={handleBorrowBook}
+        onReturn={handleReturnBook}
+      />
       <BookFilter onFilter={handleFilter} />
     </div>
   );
